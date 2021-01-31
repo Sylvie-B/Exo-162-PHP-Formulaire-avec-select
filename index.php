@@ -61,8 +61,8 @@
                 <input type="text" name="userSurname5" id="surnameEx5">
             </div>
             <div>
-                <label for="file">Fichier</label>
-                <input type="file" name="userFile" id="file">
+                <label for="id-file"></label>
+                <input type="file" name="userFile" id="id-file">
             </div>
             <div>
                 <input type="submit" value="Envoyer">
@@ -74,3 +74,13 @@
 </html>
 
 <?php
+
+if(isset($_POST['civ_5'], $_POST['userName5'], $_POST['userSurname5'], $_FILES['userFile'])){
+   echo "<br>".$_POST['civ_5']." ".$_POST['userName5']." ".$_POST['userSurname5']."<br>".$_FILES['userFile']['name']."<br>";
+}
+if(isset($_FILES["userFile"])) {
+    $fileInfos = pathinfo($_FILES['userFile']['name']);
+    if($fileInfos['extension'] !== 'pdf'){
+        echo "Veuillez sélectionner un type de fichier pdf";
+    }
+}
